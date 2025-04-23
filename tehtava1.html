@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tehtävä 1</h1>
+        <p class="question">When should you use if statements and when error handling ?</p>
+        <div class="answer" id="answer1">
+        </div>
+        
+        <div class="summary" id="summary">
+            <h2>If or error ?</h2>
+            <p>
+                If statements are ideal for directing the flow of operations based on expected, verifiable conditions such as input validation and business logic decisions.
+            </p>
+                <p>
+                On the other hand, error handling is reserved for handling unexpected or exceptional conditions, such as runtime errors or resource failures, which are not part of the routine control flow. 
+                This distinction ensures clean code separation between normal operational logic and the handling of anomalies, thereby promoting robust and maintainable code.
+            </p>
+            <ul>
+                <li>If statements: Used to check normal, predictable conditions, such as validating user input or business logic conditions.</li>
+                <br>
+                <li>Try-catch (error handling): Used when the code might encounter unexpected error situations, such as handling external resources or potential runtime errors.</li>
+            </ul>
+        </div>
+        
+        <a href="index.html" class="back-link">Back to the task list</a>
+    </div>
+    <script>
+        document.getElementById('answer1').textContent = "If statements are used to control logical paths and check expected conditions, whereas error handling (such as try-catch) is used to manage unexpected situations and exceptions. This distinction helps keep the code clear and maintainable.";
+    </script>
+</body>
+</html>

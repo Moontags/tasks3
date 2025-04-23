@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Error Handling in Enclosing Function</h1>
+       
+        <div class="answer" id="answer4">
+            <pre><code id="code4">
+function isLeapYear(year) {
+    // Leap year logic - no error throwing here
+    if (year % 4 === 0) {
+        if (year % 100 !== 0 || year % 400 === 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function tryIsLeapYear(year) {
+    try {
+        if (year === undefined) {
+            throw new Error("Missing argument year error");
+        }
+        if (!Number.isInteger(year) && year !== 0) {
+            throw new Error("Non-integer argument year error");
+        }
+        return isLeapYear(year);
+    } catch (e) {
+        console.error("Error in tryIsLeapYear:", e.message);
+        return false;
+    }
+}
+
+console.log("tryIsLeapYear(2024):", tryIsLeapYear(2024));
+console.log("tryIsLeapYear():", tryIsLeapYear());
+console.log("tryIsLeapYear(2024.5):", tryIsLeapYear(2024.5));
+            </code></pre>
+            <p class="explanation">Now, the <code><strong>isLeapYear</strong></code> function only contains the core leap year calculation logic and does not throw any errors. The <code><strong>tryIsLeapYear</strong></code> function is responsible for both checking the validity of the input <code>year</code> and throwing errors if the argument is missing or not an integer. It also encloses the call to <code><strong>isLeapYear</strong></code> in a <code>try...catch</code> block to handle any potential errors (although in this specific case, <code><strong>isLeapYear</strong></code> itself doesn't throw errors based on input).</p>
+        </div>
+        <a href="index.html" class="back-link">Back to the task list</a>
+    </div>
+</body>
+</html>

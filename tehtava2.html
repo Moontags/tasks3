@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>isLeapYear with Errors</h1>
+       
+        <div class="answer" id="answer2">
+            <pre><code id="code2">
+function isLeapYear(year) {
+    try {
+        if (year === undefined) {
+            throw new Error("Missing argument year error");
+        }
+        if (!Number.isInteger(year) && year !== 0) {
+            throw new Error("Non-integer argument year error");
+        }
+       
+        return ...;
+    } catch (e) {
+        console.error(e.message);
+        return false; 
+    }
+}
+            </code></pre>
+        </div>
+        <a href="index.html" class="back-link">Back to the task list</a>
+    </div>
+  
+</body>
+</html>

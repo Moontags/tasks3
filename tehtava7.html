@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 7</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Build Register Number</h1>
+        <div class="answer" id="answer7">
+            <pre><code id="code7">
+function buildRegisterNumber(theLetters, theDigits) {
+    const lettersRegex = /^[A-VYZ]{2,3}$/;
+    const digitsRegex = /^(?:[1-9]\d{0,2}|0)$/; 
+
+    if (!lettersRegex.test(theLetters)) {
+        throw new Error("Invalid register number letters");
+    }
+
+    if (!digitsRegex.test(theDigits)) {
+        throw new Error("Invalid register number digits");
+    }
+
+    return `${theLetters}-${theDigits}`;
+}
+
+function testRegisterNumber(letters, digits) {
+    try {
+        const registerNumber = buildRegisterNumber(letters, digits);
+        console.log(`Valid register number: ${registerNumber}`);
+        document.getElementById('result7').textContent = `Valid register number: ${registerNumber}`;
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        document.getElementById('result7').textContent = `Error: ${error.message}`;
+    }
+}
+
+  Test cases
+console.log("Testing valid inputs:");
+testRegisterNumber("AX", "12");
+testRegisterNumber("UUI", "6");
+testRegisterNumber("GFS", "200");
+testRegisterNumber("ABY", "0");
+
+console.log("\nTesting invalid letter inputs:");
+testRegisterNumber("X", "100");
+testRegisterNumber("YUTA", "020");
+testRegisterNumber("WWW", "100");
+testRegisterNumber("aB", "12");
+
+console.log("\nTesting invalid digit inputs:");
+testRegisterNumber("AX", "01");
+testRegisterNumber("UUI", "007");
+testRegisterNumber("GFS", "1234");
+testRegisterNumber("ABY", "");
+testRegisterNumber("ABY", "-5");
+testRegisterNumber("ABY", "00");
+            </code></pre>
+            <div id="result7"></div>
+            <p class="explanation">The <code><strong>buildRegisterNumber</strong></code> function takes two arguments, <code>theLetters</code> and <code>theDigits</code>. It uses regular expressions to validate both inputs.</p>
+            <ul>
+                <li>The <code><strong>lettersRegex</strong></code> <code>/^[A-VYZ]{2,3}$/</code> checks if the letters part consists of 2 to 3 uppercase letters from A to V or Y to Z (excluding W). The <code>^</code> and <code>$</code> anchors ensure that the entire string must match the pattern.</li>
+                <li>The <code><strong>digitsRegex</strong></code> <code>/^(?:[1-9]\d{0,2}|0)$/</code> checks if the digits part consists of one to three digits with no leading zeros (e.g., "1", "23", "100") or is the single digit "0". The non-capturing group <code>(?:...)</code> is used here.</li>
+                <li>If either <code>theLetters</code> or <code>theDigits</code> fails the respective regular expression test, the function throws an <code>Error</code> with a specific message.</li>
+                <li>If both arguments are valid, the function returns the combined register number in the format "letters-digits".</li>
+                <li>The <code><strong>testRegisterNumber</strong></code> function demonstrates how to use <code><strong>buildRegisterNumber</strong></code> and handles potential errors using a <code>try...catch</code> block, displaying the result or the error message on the page and in the console.</li>
+            </ul>
+        </div>
+        <a href="index.html" class="back-link">Back to the task list</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 5</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Comparing Error Handling Approaches</h1>
+        <div class="answer" id="answer5">
+          
+            <ol>
+                <li><strong>Error Handling Inside the Core Function:</strong>
+                    <ul>
+                        <li><strong>Writing:</strong> The <code>isLeapYear</code> function itself contained the <code>try...catch</code> block. It checked for invalid input and threw errors, which were then caught and handled within the same function. Logging to the console and returning a default value.</li>
+                        <li><strong>Using:</strong> Calling <code>isLeapYear</code> directly meant that the error handling was self-contained. The caller might not even be aware that errors were being caught internally.</li>
+                    </ul>
+                </li>
+                <li><strong>Error Handling in an Enclosing Function:</strong>
+                    <ul>
+                        <li><strong>Writing:</strong> The <code>isLeapYear</code> function focused on its core logic and threw errors for invalid input. A separate <code>tryIsLeapYear</code> function was introduced to wrap the call to <code>isLeapYear</code> in a <code>try...catch</code> block, handling any errors thrown by <code>isLeapYear</code>.</li>
+                        <li><strong>Using:</strong> The caller would typically call <code>tryIsLeapYear</code>. This clearly separates the error handling logic from the core functionality. The caller relies on <code>tryIsLeapYear</code> to manage potential issues.</li>
+                    </ul>
+                </li>
+                <li><strong>Error Handling and Error Throwing in an Enclosing Function:</strong>
+                    <ul>
+                        <li><strong>Writing:</strong> The core function <code>isLeapYear</code> contained only the calculation logic. The enclosing <code>tryIsLeapYear</code> function was responsible for validating input and throwing errors if necessary. It also included a <code>try...catch</code> block to handle these (or any other unexpected) errors during the execution of <code>isLeapYear</code>.</li>
+                        <li><strong>Using:</strong> Similar to the previous approach, the caller interacts with <code>tryIsLeapYear</code>. This approach centralizes input validation and error management in the enclosing function, keeping the core function cleaner.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Main Differences:</strong></p>
+            <ul>
+                <li><strong>Separation of Concerns:</strong> Moving the <code>try...catch</code> block (and even error throwing) to an enclosing function promotes a better separation of concerns. The core function focuses on its primary task, while the enclosing function handles input validation and error management.</li>
+                <li><strong>Reusability:</strong> A core function that doesn't handle errors internally can be more reusable in different contexts where error handling requirements might vary. The enclosing function provides a specific error handling strategy for a particular use case.</li>
+                <li><strong>Clarity and Readability:</strong> Separating error handling can make the core logic of a function easier to read and understand.</li>
+                <li><strong>Control for the Caller:</strong> When errors are thrown out of the core function, the calling code has more control over how to handle those errors. It can implement its own <code>try...catch</code> blocks and error recovery mechanisms.</li>
+                <li><strong>Complexity:</strong> Introducing enclosing functions adds a layer of complexity to the code structure. However, this can be a worthwhile trade-off for better organization and maintainability in larger applications.</li>
+            </ul>
+           
+        </div>
+        <a href="index.html" class="back-link">Back to the task list</a>
+    </div>
+</body>
+</html>

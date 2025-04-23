@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>tryIsLeapYear Enclosing</h1>
+        
+        <div class="answer" id="answer3">
+            <pre><code id="code3">
+function isLeapYear(year) {
+    if (year === undefined) {
+        throw new Error("Missing argument year error");
+    }
+    if (!Number.isInteger(year) && year !== 0) {
+        throw new Error("Non-integer argument year error");
+    }
+    // Leap year logic
+    if (year % 4 === 0) {
+        if (year % 100 !== 0 || year % 400 === 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function tryIsLeapYear(year) {
+    try {
+        return isLeapYear(year);
+    } catch (e) {
+        console.error("Error in isLeapYear:", e.message);
+        return false; 
+    }
+}
+
+console.log("tryIsLeapYear(2024):", tryIsLeapYear(2024));
+console.log("tryIsLeapYear():", tryIsLeapYear());
+console.log("tryIsLeapYear(2024.5):", tryIsLeapYear(2024.5));
+            </code></pre>
+            <p class="explanation">The <code><strong>isLeapYear</strong></code> function now throws errors directly for invalid input. The <code><strong>tryIsLeapYear</strong></code> function encloses the call to <code><strong>isLeapYear</strong></code> within a <code>try...catch</code> block. If <code><strong>isLeapYear</strong></code> throws an error, the <code>catch</code> block in <code><strong>tryIsLeapYear</strong></code> catches it, logs the error message to the console, and returns <code>false</code> (or handles the error as needed).</p>
+        </div>
+        <a href="index.html" class="back-link">Back to the task list</a>
+    </div>
+</body>
+</html>

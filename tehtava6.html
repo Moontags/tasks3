@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 6</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Regular Expression Explanations</h1>
+        <div class="answer" id="answer6">
+            <h3>A. Regular expressions consume their input</h3>
+            <p>Regular expressions match input string character by character, from left to right. The engine tries to find the first possible match starting from the current position. If a part of the regex matches, the engine "consumes" those characters and advances its position in the input string. If the entire regex matches, the process might stop (depending on whether you're looking for the first match or all matches). If a part of the regex fails to match, the engine might backtrack, trying other possibilities or starting the match attempt from the next character in the input.</p>
+
+            <h3>B. Parentheses around any part of the regular expression</h3>
+            
+            <ul>
+                <li><strong>Grouping:</strong> They group together a part of the regex, allowing you to apply quantifiers (like <code>*</code>, <code>+</code>, <code>?</code>, <code>{n,m}</code>) to the entire group.</li>
+                <li><strong>Capturing:</strong> They create a capturing group. The substring that matches the part of the regex inside the parentheses is saved and can be retrieved later (e.g., using the result of <code>RegExp.exec()</code> or string's <code>match()</code> method). These captured groups are numbered based on the order of the opening parenthesis.</li>
+            </ul>
+
+            <h3>C. Difference between lazy matching and greedy matching in regular expressions?</h3>
+            <ul>
+                <li><strong>Greedy Matching (default):</strong> Greedy quantifiers (like <code>*</code>, <code>+</code>, <code>{n,}</code>, <code>{n,m}</code>) try to match as much of the input string as possible while still allowing the rest of the regex to match. They will match the longest possible substring.</li>
+                <li><strong>Lazy Matching (with <code>?</code>):</strong> Lazy quantifiers (like <code>*?</code>, <code>+?</code>, <code>{n,}?</code>, <code>{n,m}?</code>) try to match as little of the input string as possible while still allowing the rest of the regex to match. They will match the shortest possible substring.</li>
+            </ul>
+
+            <h3>D. When to use RegExp constructor instead of regular expression literal like </h3>
+    
+            <ul>
+                <li><strong>Dynamic Regular Expressions:</strong> When the regular expression pattern is not known at the time you write the code but is constructed dynamically (e.g., based on user input or variables). Since the pattern is a string, you need to use the constructor.</li>
+                <li><strong>Escaping Special Characters in Variables:</strong> If you are building a regex from a string that might contain special regular expression characters, you need to manually escape them before passing the string to the <code>RegExp</code> constructor to avoid unintended behavior. With regex literals, these characters are usually escaped directly within the literal.</li>
+                <li><strong>Using Variables in the Pattern:</strong> When you want to include the value of a variable directly within the regular expression pattern.</li>
+            </ul>
+           
+        </div>
+        <a href="index.html" class="back-link">Back to the task list</a>
+    </div>
+</body>
+</html>
